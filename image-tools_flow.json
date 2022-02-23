@@ -1,0 +1,138 @@
+[
+    {
+        "id": "110a3912cd5030c0",
+        "type": "tab",
+        "label": "フロー 2",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "3bcb8b4827c6c9d7",
+        "type": "inject",
+        "z": "110a3912cd5030c0",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 120,
+        "y": 80,
+        "wires": [
+            [
+                "8f39e182fcde5d87",
+                "b0db489d424ea4fd"
+            ]
+        ]
+    },
+    {
+        "id": "e1348384a762693a",
+        "type": "image viewer",
+        "z": "110a3912cd5030c0",
+        "name": "",
+        "width": "160",
+        "data": "payload",
+        "dataType": "msg",
+        "active": true,
+        "x": 570,
+        "y": 80,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "8f39e182fcde5d87",
+        "type": "file in",
+        "z": "110a3912cd5030c0",
+        "name": "画像データ読み込み",
+        "filename": "kid_job_boy_programmer.png",
+        "format": "",
+        "chunk": false,
+        "sendError": false,
+        "encoding": "none",
+        "allProps": false,
+        "x": 360,
+        "y": 80,
+        "wires": [
+            [
+                "e1348384a762693a"
+            ]
+        ]
+    },
+    {
+        "id": "b0db489d424ea4fd",
+        "type": "http request",
+        "z": "110a3912cd5030c0",
+        "name": "",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "https://aws.random.cat/meow",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "senderr": false,
+        "x": 230,
+        "y": 440,
+        "wires": [
+            [
+                "85423309b66924ab"
+            ]
+        ]
+    },
+    {
+        "id": "1e883031e20167ed",
+        "type": "image viewer",
+        "z": "110a3912cd5030c0",
+        "name": "",
+        "width": 160,
+        "data": "payload",
+        "dataType": "msg",
+        "active": true,
+        "x": 630,
+        "y": 440,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "85423309b66924ab",
+        "type": "change",
+        "z": "110a3912cd5030c0",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.file",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 440,
+        "y": 440,
+        "wires": [
+            [
+                "1e883031e20167ed"
+            ]
+        ]
+    }
+]

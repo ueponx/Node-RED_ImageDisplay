@@ -1,0 +1,140 @@
+[
+    {
+        "id": "af0547574a03c843",
+        "type": "tab",
+        "label": "フロー 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "55b564773b1f8eef",
+        "type": "image",
+        "z": "af0547574a03c843",
+        "name": "",
+        "width": "160",
+        "data": "payload",
+        "dataType": "msg",
+        "thumbnail": false,
+        "active": true,
+        "pass": false,
+        "outputs": 0,
+        "x": 640,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "fb1c1ee17aa18aa0",
+        "type": "inject",
+        "z": "af0547574a03c843",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 160,
+        "y": 60,
+        "wires": [
+            [
+                "c442f7cab9c03464",
+                "6fa28073f0b5c1a3"
+            ]
+        ]
+    },
+    {
+        "id": "c442f7cab9c03464",
+        "type": "file in",
+        "z": "af0547574a03c843",
+        "name": "画像データ読み込み",
+        "filename": "kid_job_boy_programmer.png",
+        "format": "",
+        "chunk": false,
+        "sendError": false,
+        "encoding": "none",
+        "allProps": false,
+        "x": 400,
+        "y": 60,
+        "wires": [
+            [
+                "55b564773b1f8eef"
+            ]
+        ]
+    },
+    {
+        "id": "4b37166f17780cd0",
+        "type": "image",
+        "z": "af0547574a03c843",
+        "name": "",
+        "width": 160,
+        "data": "payload",
+        "dataType": "msg",
+        "thumbnail": false,
+        "active": true,
+        "pass": false,
+        "outputs": 0,
+        "x": 680,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "6fa28073f0b5c1a3",
+        "type": "http request",
+        "z": "af0547574a03c843",
+        "name": "",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "https://aws.random.cat/meow",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "senderr": false,
+        "x": 270,
+        "y": 400,
+        "wires": [
+            [
+                "a9862dbb14be0366"
+            ]
+        ]
+    },
+    {
+        "id": "a9862dbb14be0366",
+        "type": "change",
+        "z": "af0547574a03c843",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.file",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 460,
+        "y": 400,
+        "wires": [
+            [
+                "4b37166f17780cd0"
+            ]
+        ]
+    }
+]
